@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-MART | Product Catalogue</title>
+  <link rel="icon" href="favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home">E-<span>MART</span></a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#catalogue">Catalogue</a>
+      <a href="#add-product">Add Product</a>
+    </nav>
+    <a class="outline-btn" href="#add-product">Add Product ↗</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div>
+      <p class="eyebrow">⚡ ELECTRONICS STORE MANAGER</p>
+      <h1>EVERY GADGET. <span>ONE CATALOGUE.</span></h1>
+      <p class="hero-text">Add new electronics, update prices and manage the complete
+        E-MART product catalogue. Every change is saved in MongoDB.</p>
+      <a class="primary-btn" href="#add-product">Add a Product →</a>
+      <a class="ghost-btn" href="#catalogue">View Catalogue</a>
+    </div>
+    <div class="hero-visual">
+      <div class="ring"></div>
+      <div class="device-card">
+        <p>● DATABASE CONNECTED</p>
+        <div class="device-icon">📦</div>
+        <h3>PRODUCT CATALOGUE</h3>
+        <small>CREATE · READ · UPDATE · DELETE</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalogue (READ) -->
+  <section class="catalogue" id="catalogue">
+    <div class="section-title">
+      <div>
+        <p class="eyebrow">LIVE FROM MONGODB</p>
+        <h2>PRODUCT <span>CATALOGUE</span></h2>
+      </div>
+      <button class="outline-btn" id="refreshBtn">↻ Refresh</button>
+    </div>
+    <p id="notice" class="notice">Loading products...</p>
+    <div id="productGrid" class="product-grid"></div>
+    <p id="emptyState" class="empty" hidden>No products yet. Add your first product below.</p>
+  </section>
+
+  <!-- Form (CREATE / UPDATE) -->
+  <section class="join" id="add-product">
+    <div class="join-text">
+      <p class="eyebrow">MANAGE INVENTORY</p>
+      <h2>ADD A NEW <span>PRODUCT.</span></h2>
+      <p>Enter the product name, brand, category and price. The product is stored in
+        the <b>EMartDB</b> database inside the <b>products</b> collection.</p>
+      <ul>
+        <li>✦ insertOne() adds a product</li>
+        <li>✦ find() lists all products</li>
+        <li>✦ updateOne() edits a product</li>
+        <li>✦ deleteOne() removes a product</li>
+      </ul>
+    </div>
+
+    <form id="productForm" class="form-card">
+      <h3 id="formTitle">ADD PRODUCT</h3>
+      <input type="hidden" id="productId">
+      <label>Product Name</label>
+      <input id="productName" placeholder="e.g. Galaxy Ultra S26" required>
+      <label>Brand</label>
+      <input id="brand" placeholder="e.g. Samsung" required>
+      <label>Category</label>
+      <select id="category" required>
+        <option value="">Choose a category</option>
+        <option>Smartphones</option>
+        <option>Laptops</option>
+        <option>Audio</option>
+        <option>Wearables</option>
+        <option>Cameras</option>
+      </select>
+      <label>Price (₹)</label>
+      <input id="price" type="number" min="1" placeholder="e.g. 49999" required>
+      <div class="form-actions">
+        <button type="submit" class="primary-btn" id="submitBtn">Add Product →</button>
+        <button type="button" class="outline-btn" id="cancelEdit" hidden>Cancel edit</button>
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    <span class="brand">E-<span>MART</span></span>
+    <p>Node.js · MongoDB · Vercel</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
