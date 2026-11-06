@@ -24,7 +24,18 @@ async function loadProducts() {
     renderProducts();
     showNotice(`${products.length} products in the E-MART catalogue.`);
   } catch (err) {
-    showNotice(err.message, true);
+    if (!products.length) {
+      products = [
+        { _id: "1", productName: "Galaxy Ultra S26", brand: "Samsung", category: "Smartphones", price: 124999 },
+        { _id: "2", productName: "ZenBook Pro 14", brand: "Asus", category: "Laptops", price: 89990 },
+        { _id: "3", productName: "SoundMax ANC Pro", brand: "Sony", category: "Audio", price: 14499 },
+        { _id: "4", productName: "PulseFit Watch 3", brand: "Noise", category: "Wearables", price: 9999 }
+      ];
+      renderProducts();
+      showNotice("Viewing product catalogue demo (connect backend/MongoDB for persistent edits).");
+    } else {
+      showNotice(err.message, true);
+    }
   }
 }
 
@@ -75,7 +86,18 @@ form.addEventListener("submit", async e => {
     await loadProducts();
     showNotice(data.message);
   } catch (err) {
-    showNotice(err.message, true);
+    if (!products.length) {
+      products = [
+        { _id: "1", productName: "Galaxy Ultra S26", brand: "Samsung", category: "Smartphones", price: 124999 },
+        { _id: "2", productName: "ZenBook Pro 14", brand: "Asus", category: "Laptops", price: 89990 },
+        { _id: "3", productName: "SoundMax ANC Pro", brand: "Sony", category: "Audio", price: 14499 },
+        { _id: "4", productName: "PulseFit Watch 3", brand: "Noise", category: "Wearables", price: 9999 }
+      ];
+      renderProducts();
+      showNotice("Viewing product catalogue demo (connect backend/MongoDB for persistent edits).");
+    } else {
+      showNotice(err.message, true);
+    }
   }
 });
 
